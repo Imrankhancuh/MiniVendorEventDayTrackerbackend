@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-const dotenv = require("dotenv");
 
 const auth = require("./routes/auth");
 const checkin = require("./routes/checkin");
