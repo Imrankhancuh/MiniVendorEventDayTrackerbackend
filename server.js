@@ -18,4 +18,19 @@ app.use("/api/otp", otp);
 app.use("/api/setup", setup);
 app.use("/api/close", close);
 
-app.listen(5000, () => console.log("Backend running on 5000"));
+// Add a root route to avoid "Cannot GET /"
+app.get("/", (req, res) => {
+  res.json({
+    message: "API is running",
+    endpoints: [
+      "/api/auth",
+      "/api/checkin", 
+      "/api/otp",
+      "/api/setup",
+      "/api/close"
+    ]
+  });
+});
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Backend running on ${PORT}`));
